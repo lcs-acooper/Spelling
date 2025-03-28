@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+struct Result: Identifiable {
+    
+    let id = UUID()
+    
+    
+    let item: Item
+    
+    
+    let guessProvided: String
+    
+    
+    let outcome: Outcome 
+    
+}
