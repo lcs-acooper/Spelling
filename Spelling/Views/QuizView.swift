@@ -23,33 +23,52 @@ struct QuizView: View {
     // MARK: Computed properties
     var body: some View {
         
-        VStack {
-            Image(currentItem.imageName)
-                .resizable()
-                .scaledToFit()
-            
-            HStack {
-                TextField("Enter the name of the item", text: $userGuess)
+        HStack {
+            //Left side
+            VStack {
+                Image(currentItem.imageName)
+                    .resizable()
+                    .scaledToFit()
                 
-                Text(currentOutcome.rawValue)
+                HStack {
+                    TextField("Enter the name of the item", text: $userGuess)
+                    
+                    Text(currentOutcome.rawValue)
+                }
+                
+                HStack {
+                    
+                    Button {
+                        checkGuess()
+                    } label: {
+                        Text("Submit")
+                    }
+                    
+                    Button {
+                        newWord()
+                    } label: {
+                        Text("New word")
+                    }
+                }
             }
-            
-            HStack {
+            //Right  side
+            List(history) { currentResult in
                 
-                Button {
-                    checkGuess()
-                } label: {
-                    Text("Submit")
+                HStack {
+                    Image(currentResult.item.imageName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50)
+                    
+                    Text(currentResult.guessProvided)
+                    
+                    Spacer()
+                    
+                    Text(currentResult.outcome.rawValue)
                 }
                 
-                Button {
-                    newWord()
-                } label: {
-                    Text("New word")
-                }
             }
         }
-        
     }
     
     // MARK: Functions
