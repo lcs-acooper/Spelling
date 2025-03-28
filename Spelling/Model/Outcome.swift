@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+enum Outcome: String {
+    case undetermined = ""
+    case correct = "😁"
+    case incorrect = "😞"
+}
